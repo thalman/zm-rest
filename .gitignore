@@ -1,0 +1,5 @@
+__pycache__
+venv
+*.so
+*.o
+_zm_rest.c
