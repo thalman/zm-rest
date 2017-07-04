@@ -19,3 +19,7 @@ Proof of concept
 
     FLASK_APP=zm_rest.py flask run
     curl http://localhost:5000/devices
+
+## Test
+
+    python setup.py test

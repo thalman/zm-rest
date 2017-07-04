@@ -45,7 +45,7 @@ def mlm_connect ():
 
 @app.route ('/')
 def slash ():
-    return json.dumps (["/devices", app.config ["ENDPOINT"]])
+    return json.dumps (["/devices", ])
 
 @app.route ('/devices')
 def devices ():
