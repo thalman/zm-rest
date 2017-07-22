@@ -44,7 +44,6 @@ class ZmProto ():
     def lib (self):
         return self._proto
 
-
 ### Flask init
 app = Flask("zm_rest")
 app.config.from_object(__name__) # load config from this file , zm_rest.py
@@ -92,7 +91,6 @@ def mlm_disconnect (r):
     del g.msg
     return r
 
-
 with app.app_context() as app_context:
     print ("#### 1", file=sys.stderr)
     print (dir (app_context))
@@ -119,10 +117,9 @@ def devices ():
     zm_proto.lib.zm_proto_sendto (msg, mlm_client, b"devices", b"DEVICES-ALL");
 
     ret = list ()
-    zm_proto.lib.zm_proto_recv_mlm (msg, mlm_client)
-    ret.append (zm_proto.ffi.string (zm_proto.lib.zm_proto_device (msg)))
-    #zm_proto.lib.zm_proto_recv_mlm (g.msg, g.mlm_client)
-    #ret.append (ffi.string (zm_proto.lib.zm_proto_device (msg)))
+    for i in range (2):
+        zm_proto.lib.zm_proto_recv_mlm (msg, mlm_client)
+        ret.append (zm_proto.ffi.string (zm_proto.lib.zm_proto_device (msg)))
 
     return json.dumps ([x.decode ("utf-8") for x in ret]) + "\n"
 

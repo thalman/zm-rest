@@ -13,6 +13,7 @@ setup(
     ],
     tests_require=[
         'pytest',
+        'pytest-flask'
     ],
     cffi_modules=["zm_rest/native.py:ffibuilder"],
 )
