@@ -23,6 +23,7 @@ static zactor_t * start_malamute_server (const char* endpoint, bool verbose)
 
 static void devices_server (zsock_t *pipe, void *args)
 {
+    zsys_debug ("devices_server: START");
     char *endpoint = strdup ((char*) args);
     mlm_client_t *client = mlm_client_new ();
     mlm_client_connect (client, endpoint, 5000, "devices");
@@ -42,6 +43,7 @@ static void devices_server (zsock_t *pipe, void *args)
 
         zmsg_t *msg = mlm_client_recv (client);
         zmsg_destroy (&msg);
+        zsys_debug ("C:devices_server: got message");
 
         for (int i = 0; i != 2; i++) {
             char *device = zsys_sprintf ("device.%d", i);
@@ -58,6 +60,9 @@ static void devices_server (zsock_t *pipe, void *args)
 
 static zactor_t *start_devices_server (const char *endpoint, bool verbose)
 {
+    zsys_debug ("C:start_devices_server: endpoint=%s, verbose=%s",
+        endpoint,
+        verbose ? "true" : "false");
     zactor_t *server = zactor_new (devices_server, (void*) endpoint);
     return server;
 }
