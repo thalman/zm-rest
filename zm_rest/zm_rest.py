@@ -91,7 +91,6 @@ def mlm_disconnect (r):
     del g.msg
     return r
 
-
 with app.app_context() as app_context:
     print ("#### 1", file=sys.stderr)
     print (dir (app_context))
