@@ -7,6 +7,7 @@ ffibuilder.cdef ("""
 typedef struct _zactor_t zactor_t;
 zactor_t * start_malamute_server (const char* endpoint, bool verbose);
 zactor_t * start_devices_server (const char *endpoint, bool verbose);
+void zactor_destroy (zactor_t **self_p);
 """)
 ffibuilder.set_source ("_native", r"""
 #include <malamute.h>
