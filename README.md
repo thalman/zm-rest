@@ -27,6 +27,7 @@ Proof of concept
     python setup.py test
 
 ## TODO
- * the appcontext_teardown is not called, so actors are not destroyed
+ * does NOT react on Ctrl+C
  * the the usage of cffi interface is ugly and unpythonic
+   Partially solved by VoidWrapper, there are now classes for each basic types
  * more APIs
